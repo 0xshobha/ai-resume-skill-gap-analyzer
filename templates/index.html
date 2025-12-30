@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Skill Gap Analyzer | Find Your Missing Skills</title>
+    <meta name="description"
+        content="Analyze your resume against job descriptions to identify skill gaps and get personalized recommendations for career growth.">
+    <meta name="keywords" content="resume analyzer, skill gap, career development, job matching, AI analysis">
+    <meta name="author" content="AI Resume Analyzer">
+    <meta property="og:title" content="AI Resume Skill Gap Analyzer">
+    <meta property="og:description"
+        content="Discover missing skills and boost your career potential with AI-powered analysis">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">🎯</div>
+                <span>SkillGap<span class="logo-highlight">AI</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#analyze">Analyze</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#analyze" class="nav-cta">Get Started</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">✨</span>
+                    <span>AI-Powered Analysis</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Discover Your</span>
+                    <span class="title-line gradient-text typing-text" id="typingText">Skill Gaps</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Upload your resume, paste a job description, and let our AI instantly identify the skills you need
+                    to land your dream job.
+                </p>
+                <div class="hero-cta">
+                    <a href="#analyze" class="btn btn-primary btn-large">
+                        <span class="btn-text">🔍 Analyze Now</span>
+                    </a>
+                    <a href="#how-it-works" class="btn btn-secondary btn-large">
+                        <span class="btn-text">Learn More</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="stat-value" data-count="10000">0</span>
+                        <span class="stat-label">Resumes Analyzed</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-value" data-count="500">0</span>
+                        <span class="stat-label">Skills Tracked</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-value" data-count="95">0</span>
+                        <span class="stat-label">Accuracy Rate %</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="mini-icon">📄</div>
+                    <span>Resume</span>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="mini-icon">💼</div>
+                    <span>Job Match</span>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="mini-icon">🎯</div>
+                    <span>Skills</span>
+                </div>
+                <div class="hero-circle"></div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section how-it-works" id="how-it-works">
+            <div class="section-header">
+                <span class="section-badge">Simple Process</span>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Get your personalized skill gap analysis in just 3 easy steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">📤</div>
+                    <h3 class="step-title">Upload Resume</h3>
+                    <p class="step-description">
+                        Upload your resume as a PDF/TXT file or simply paste the text directly. We support all common
+                        formats.
+                    </p>
+                </div>
+                <div class="step-connector">
+                    <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                        <path d="M0 10 L100 10" stroke="url(#connector-gradient)" stroke-width="2"
+                            stroke-dasharray="5,5" />
+                        <defs>
+                            <linearGradient id="connector-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#8b5cf6" />
+                                <stop offset="100%" style="stop-color:#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">💼</div>
+                    <h3 class="step-title">Add Job Description</h3>
+                    <p class="step-description">
+                        Paste the job description you're targeting. Our AI will extract and match all required skills.
+                    </p>
+                </div>
+                <div class="step-connector">
+                    <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                        <path d="M0 10 L100 10" stroke="url(#connector-gradient)" stroke-width="2"
+                            stroke-dasharray="5,5" />
+                    </svg>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">📊</div>
+                    <h3 class="step-title">Get Your Analysis</h3>
+                    <p class="step-description">
+                        Receive a detailed breakdown of matched and missing skills, plus personalized learning
+                        recommendations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features" id="features">
+            <div class="section-header">
+                <span class="section-badge">Powerful Features</span>
+                <h2 class="section-title">Why Choose Our Analyzer</h2>
+                <p class="section-subtitle">Built with cutting-edge technology to accelerate your career</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">⚡</div>
+                    </div>
+                    <h3 class="feature-title">Instant Analysis</h3>
+                    <p class="feature-description">
+                        Get comprehensive results in seconds, not hours. Our AI processes your resume instantly.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🎯</div>
+                    </div>
+                    <h3 class="feature-title">Precise Matching</h3>
+                    <p class="feature-description">
+                        Advanced pattern matching identifies skills accurately across 500+ technical and soft skills.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">💡</div>
+                    </div>
+                    <h3 class="feature-title">Smart Recommendations</h3>
+                    <p class="feature-description">
+                        Receive personalized learning paths and resources to fill your skill gaps effectively.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">📈</div>
+                    </div>
+                    <h3 class="feature-title">Career Growth</h3>
+                    <p class="feature-description">
+                        Track your progress and see your match percentage improve as you develop new skills.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🔒</div>
+                    </div>
+                    <h3 class="feature-title">100% Private</h3>
+                    <p class="feature-description">
+                        Your resume data is never stored or shared. Analysis happens securely and is immediately
+                        deleted.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🌐</div>
+                    </div>
+                    <h3 class="feature-title">Industry Agnostic</h3>
+                    <p class="feature-description">
+                        Works for all industries: tech, healthcare, finance, marketing, and more.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Form Card -->
+        <section class="section analyze-section" id="analyze">
+            <div class="section-header">
+                <span class="section-badge">Start Now</span>
+                <h2 class="section-title">Analyze Your Resume</h2>
+                <p class="section-subtitle">Upload your resume and discover your skill gaps today</p>
+            </div>
+
+            <div class="card form-card">
+                <h2 class="card-title">
+                    <span class="icon">📄</span>
+                    Upload Your Resume
+                </h2>
+
+                {% if error %}
+                <div class="error-message">
+                    <span>⚠️</span> {{ error }}
+                </div>
+                {% endif %}
+
+                <form action="{{ url_for('analyze') }}" method="POST" enctype="multipart/form-data" id="analyzeForm">
+                    <!-- File Upload Section -->
+                    <div class="form-group">
+                        <label>Resume File (PDF or TXT)</label>
+                        <div class="file-upload" id="dropZone">
+                            <input type="file" name="resume_file" id="resume_file" accept=".pdf,.txt">
+                            <div class="file-upload-icon">📁</div>
+                            <p class="file-upload-text">
+                                Drag & drop your resume here or <span>browse files</span>
+                            </p>
+                            <div class="file-name"></div>
+                        </div>
+                    </div>
+
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Resume Text Area -->
+                    <div class="form-group">
+                        <label for="resume_text">Paste Your Resume Text</label>
+                        <textarea name="resume_text" id="resume_text" placeholder="Paste your resume content here...
+
+Example:
+John Doe | Software Engineer
+
+Skills: Python, JavaScript, React, Node.js, AWS, Docker, Machine Learning
+
+Experience:
+- Developed web applications using React and Node.js
+- Implemented CI/CD pipelines with GitHub Actions
+- Built machine learning models with TensorFlow"></textarea>
+                    </div>
+
+                    <!-- Job Description Section -->
+                    <div class="form-group">
+                        <label for="job_description">
+                            <span class="icon">💼</span>
+                            Target Job Description
+                        </label>
+                        <textarea name="job_description" id="job_description" placeholder="Paste the job description you're applying for...
+
+Example:
+We are looking for a Full Stack Developer with experience in:
+- React, Angular, or Vue.js
+- Node.js or Python backend development
+- PostgreSQL or MongoDB databases
+- AWS or GCP cloud services
+- Docker and Kubernetes
+- CI/CD pipelines
+- Strong problem-solving skills" required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span class="btn-text">🔍 Analyze Skills Gap</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section testimonials" id="testimonials">
+            <div class="section-header">
+                <span class="section-badge">Success Stories</span>
+                <h2 class="section-title">What Users Say</h2>
+                <p class="section-subtitle">Join thousands of professionals who've improved their careers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "This tool helped me identify exactly which skills I was missing for my dream job. I focused on
+                        learning them and got hired within 3 months!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <span class="author-name">James Davis</span>
+                            <span class="author-title">Software Engineer at Google</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "The instant analysis saved me hours of manual comparison. The learning recommendations were
+                        spot-on and incredibly helpful."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <span class="author-name">Sarah Kim</span>
+                            <span class="author-title">Data Scientist at Amazon</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "As a career changer, I had no idea what skills I was missing. This analyzer gave me a clear
+                        roadmap to follow."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MP</div>
+                        <div class="author-info">
+                            <span class="author-name">Michael Patel</span>
+                            <span class="author-title">Product Manager at Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq" id="faq">
+            <div class="section-header">
+                <span class="section-badge">Questions?</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about our skill gap analyzer</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How accurate is the skill matching?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our AI uses advanced pattern matching with a database of 500+ skills across multiple
+                            categories. It achieves approximately 95% accuracy in identifying both hard and soft skills
+                            from resumes and job descriptions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is my resume data kept private?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. We take privacy seriously. Your resume data is only used for analysis and is
+                            never stored on our servers. Once the analysis is complete, all data is immediately deleted.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What file formats are supported?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We currently support PDF and TXT file formats. You can also paste your resume text directly
+                            into the text area if you prefer not to upload a file.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do the learning recommendations work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For each missing skill, we provide curated learning resources from platforms like Coursera,
+                            Udemy, freeCodeCamp, and official documentation. These recommendations are tailored to help
+                            you bridge your skill gaps efficiently.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I analyze multiple job descriptions?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! You can run unlimited analyses. Simply return to the home page and submit a new job
+                            description each time. This helps you compare skill requirements across different positions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="cta-card">
+                <h2 class="cta-title">Ready to Boost Your Career?</h2>
+                <p class="cta-text">Start analyzing your resume now and discover the skills you need to land your dream
+                    job.</p>
+                <a href="#analyze" class="btn btn-primary btn-large">
+                    <span class="btn-text">🚀 Get Started Free</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="nav-logo-icon">🎯</div>
+                        <span>SkillGap<span class="logo-highlight">AI</span></span>
+                    </div>
+                    <p class="footer-tagline">Empowering careers with AI-powered skill analysis</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#analyze">Analyze Resume</a></li>
+                            <li><a href="#testimonials">Success Stories</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Built with ❤️ for career growth | AI-Powered Skill Analysis</p>
+                <p class="copyright">© 2024 SkillGapAI. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

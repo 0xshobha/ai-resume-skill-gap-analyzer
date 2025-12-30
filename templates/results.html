@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results | AI Resume Skill Gap Analyzer</title>
+    <meta name="description"
+        content="Your personalized skill gap analysis results with recommendations for career growth.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-logo">
+                <div class="nav-logo-icon">🎯</div>
+                <span>SkillGap<span class="logo-highlight">AI</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('index') }}#how-it-works">How It Works</a></li>
+                <li><a href="{{ url_for('index') }}#features">Features</a></li>
+                <li><a href="{{ url_for('index') }}#analyze">Analyze</a></li>
+                <li><a href="{{ url_for('index') }}#faq">FAQ</a></li>
+            </ul>
+            <a href="{{ url_for('index') }}#analyze" class="nav-cta">New Analysis</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 100px;">
+        <!-- Header -->
+        <header class="results-header">
+            <div class="hero-badge" style="margin-bottom: 1rem;">
+                <span class="badge-icon">✨</span>
+                <span>Analysis Complete</span>
+            </div>
+            <h1>Your Skill Gap Analysis</h1>
+            <p class="subtitle">Here's how your skills match the job requirements</p>
+        </header>
+
+        <!-- Match Circle -->
+        <div class="match-circle-container">
+            <div class="match-circle" data-percentage="{{ results.match_percentage }}">
+                <svg viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="gradient-success" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#10b981" />
+                            <stop offset="100%" style="stop-color:#34d399" />
+                        </linearGradient>
+                        <linearGradient id="gradient-warning" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f59e0b" />
+                            <stop offset="100%" style="stop-color:#fbbf24" />
+                        </linearGradient>
+                        <linearGradient id="gradient-danger" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ef4444" />
+                            <stop offset="100%" style="stop-color:#f97316" />
+                        </linearGradient>
+                    </defs>
+                    <circle class="bg-circle" cx="100" cy="100" r="90" />
+                    <circle class="progress-circle" cx="100" cy="100" r="90" />
+                </svg>
+                <div class="match-percentage">
+                    <div class="percentage">0%</div>
+                    <div class="label">Match Score</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card success">
+                <div class="stat-number">{{ results.matched_skills|length }}</div>
+                <div class="stat-label">Matched Skills</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="stat-number">{{ results.missing_skills|length }}</div>
+                <div class="stat-label">Missing Skills</div>
+            </div>
+            <div class="stat-card info">
+                <div class="stat-number">{{ results.extra_skills|length }}</div>
+                <div class="stat-label">Extra Skills</div>
+            </div>
+        </div>
+
+        <!-- Matched Skills Section -->
+        {% if results.matched_skills %}
+        <div class="card">
+            <div class="skills-section matched">
+                <h3>✅ Skills You Have That Match</h3>
+                <div class="skills-grid">
+                    {% for skill in results.matched_skills %}
+                    <span class="skill-tag matched">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Missing Skills Section -->
+        {% if results.missing_skills %}
+        <div class="card">
+            <div class="skills-section missing">
+                <h3>⚠️ Skills You Need to Develop</h3>
+                <div class="skills-grid">
+                    {% for skill in results.missing_skills %}
+                    <span class="skill-tag missing">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            {% if results.recommendations %}
+            <div class="recommendations">
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">
+                    💡 Learning Recommendations
+                </h3>
+                {% for rec in results.recommendations %}
+                <div class="recommendation-card">
+                    <div class="recommendation-skill">{{ rec.skill }}</div>
+                    <div class="recommendation-text">{{ rec.resource }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Extra Skills Section -->
+        {% if results.extra_skills %}
+        <div class="card">
+            <div class="skills-section extra">
+                <h3>🌟 Additional Skills You Bring</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.95rem;">
+                    These are valuable skills on your resume that weren't mentioned in the job description
+                </p>
+                <div class="skills-grid">
+                    {% for skill in results.extra_skills %}
+                    <span class="skill-tag extra">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Summary Card -->
+        <div class="card">
+            <h2 class="card-title">
+                <span class="icon">📋</span>
+                Analysis Summary
+            </h2>
+            <div style="color: var(--text-secondary); line-height: 1.8;">
+                {% if results.match_percentage >= 70 %}
+                <p>🎉 <strong style="color: var(--success-light);">Great match!</strong> Your resume aligns well with
+                    this job. You have <strong>{{ results.matched_skills|length }}</strong> matching skills out of
+                    <strong>{{ results.total_job_skills }}</strong> required.
+                </p>
+                {% elif results.match_percentage >= 40 %}
+                <p>📈 <strong style="color: var(--warning-light);">Good potential!</strong> With some skill development,
+                    you could be a strong candidate. Focus on learning the <strong>{{ results.missing_skills|length
+                        }}</strong> missing skills.</p>
+                {% else %}
+                <p>🚀 <strong style="color: var(--accent-light);">Room for growth!</strong> This role requires skills
+                    you're currently developing. Consider it a roadmap for your learning journey.</p>
+                {% endif %}
+
+                <p style="margin-top: 1rem;">
+                    Your resume contains <strong>{{ results.total_resume_skills }}</strong> identifiable skills.
+                    {% if results.extra_skills %}
+                    The <strong>{{ results.extra_skills|length }}</strong> additional skills you have could make you
+                    stand out!
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0;">
+            <a href="{{ url_for('index') }}#analyze" class="btn btn-primary btn-large">
+                🔄 Analyze Another Resume
+            </a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary btn-large">
+                🏠 Back to Home
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>Built with ❤️ for career growth | AI-Powered Skill Analysis</p>
+                <p class="copyright">© 2024 SkillGapAI. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
