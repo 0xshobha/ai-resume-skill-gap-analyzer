@@ -33,7 +33,7 @@ export async function analyzeResume(
   const truncatedJobDescription = jobDescription?.slice(0, MAX_JOB_DESCRIPTION_LENGTH);
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const prompt = buildAnalysisPrompt(truncatedResumeText, truncatedJobDescription);
 
@@ -55,7 +55,7 @@ export async function analyzeResume(
         throw new Error('API rate limit exceeded. Please try again in a few minutes.');
       }
     }
-    throw new Error('Failed to analyze resume. Please try again.');
+    throw new Error(`Failed to analyze resume: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
