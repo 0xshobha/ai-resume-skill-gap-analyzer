@@ -5,6 +5,7 @@ An intelligent web application that analyzes your resume against job description
 ## Live Demo
 
 [View Live Demo](https://ai-resume-skill-gap-analyzer.vercel.app)
+*(Last Updated: 2025-12-31)*
 
 ## Features
 

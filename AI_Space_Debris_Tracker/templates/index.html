@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Space Debris Tracker</title>
+
+    <!-- Google Fonts for "Tech" look -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Plotly.js for 3D Visualization -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Background Stars -->
+    <div class="stars"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>🛰️ ORBIT GUARD AI</h1>
+                <p>Space Debris Monitoring & Collision Avoidance System</p>
+            </div>
+            <div class="status-badge" id="system-status">SYSTEM ONLINE</div>
+        </header>
+
+        <!-- Main Grid Layout -->
+        <main class="dashboard-grid">
+
+            <!-- Left Panel: Controls & Info -->
+            <section class="panel side-panel">
+                <h2>Mission Control</h2>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <span class="label">Total Objects</span>
+                        <span class="value" id="total-count">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Satellites</span>
+                        <span class="value text-green" id="sat-count">--</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Debris</span>
+                        <span class="value text-red" id="deb-count">--</span>
+                    </div>
+                </div>
+
+                <div class="risk-alerts">
+                    <h3>⚠️ Collision Risks (Simulated)</h3>
+                    <div id="alert-feed" class="alert-feed">
+                        <p class="placeholder">Scanning orbit...</p>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <h3>Legend</h3>
+                    <div class="legend-item"><span class="dot green"></span> Active Satellite</div>
+                    <div class="legend-item"><span class="dot red"></span> Space Debris</div>
+                </div>
+            </section>
+
+            <!-- Center Panel: 3D Globe -->
+            <section class="panel viz-panel">
+                <div id="globe-viz"></div>
+                <!-- Loading Overlay -->
+                <div id="loading" class="loading-overlay">Initializing Satellite Link...</div>
+            </section>
+
+            <!-- Bottom Panel: Education -->
+            <section class="panel logic-panel">
+                <h2>🧠 How AI Protects Space</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>1. Detection</h4>
+                        <p>Radars track thousands of junk pieces larger than 10cm.</p>
+                    </div>
+                    <div class="card">
+                        <h4>2. Prediction</h4>
+                        <p>Math algorithms calculate orbits to predict future paths.</p>
+                    </div>
+                    <div class="card">
+                        <h4>3. Avoidance</h4>
+                        <p>If risk > threshold, satellites fire thrusters to move.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Class 10 Hackathon Project | Built with Python & JS | <strong>Educational Prototype</strong></p>
+        </footer>
+    </div>
+
+    <!-- Main Logic Script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

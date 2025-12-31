@@ -1,0 +1,92 @@
+[
+    {
+        "id": "SAT-001",
+        "name": "ISS (Zarya)",
+        "type": "satellite",
+        "lat": 0.0,
+        "lon": 0.0,
+        "alt": 420,
+        "velocity": 7.66
+    },
+    {
+        "id": "SAT-002",
+        "name": "Hubble Telescope",
+        "type": "satellite",
+        "lat": 28.5,
+        "lon": -80.6,
+        "alt": 540,
+        "velocity": 7.59
+    },
+    {
+        "id": "SAT-003",
+        "name": "Tiangong Station",
+        "type": "satellite",
+        "lat": -15.2,
+        "lon": 110.4,
+        "alt": 390,
+        "velocity": 7.68
+    },
+    {
+        "id": "SAT-004",
+        "name": "Starlink-1024",
+        "type": "satellite",
+        "lat": 45.0,
+        "lon": -120.0,
+        "alt": 550,
+        "velocity": 7.50
+    },
+    {
+        "id": "SAT-005",
+        "name": "GPS-III",
+        "type": "satellite",
+        "lat": 10.0,
+        "lon": 45.0,
+        "alt": 20200,
+        "velocity": 3.87
+    },
+    {
+        "id": "DEB-001",
+        "name": "Debris (Fengyun-1C)",
+        "type": "debris",
+        "lat": 1.0,
+        "lon": 1.0,
+        "alt": 425,
+        "velocity": 7.8
+    },
+    {
+        "id": "DEB-002",
+        "name": "Debris (Cosmos-2251)",
+        "type": "debris",
+        "lat": 46.0,
+        "lon": -121.0,
+        "alt": 555,
+        "velocity": 7.9
+    },
+    {
+        "id": "DEB-003",
+        "name": "Rocket Body (SL-16)",
+        "type": "debris",
+        "lat": -10.0,
+        "lon": 100.0,
+        "alt": 850,
+        "velocity": 7.4
+    },
+    {
+        "id": "DEB-004",
+        "name": "Paint Flake",
+        "type": "debris",
+        "lat": 28.6,
+        "lon": -80.5,
+        "alt": 540,
+        "velocity": 8.0
+    },
+    {
+        "id": "DEB-005",
+        "name": "Solar Panel Frag",
+        "type": "debris",
+        "lat": -15.0,
+        "lon": 110.0,
+        "alt": 390,
+        "velocity": 7.7
+    }
+]
